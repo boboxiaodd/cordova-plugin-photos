@@ -154,6 +154,7 @@ array of objects with the following structure:
 | `height`      | int    | A height of image in pixels. |
 | `latitude`    | double | An optional geolocation latitude. | 
 | `longitude`   | double | An optional geolocation longitude. | 
+| `size`	| long	 | File size of this photo
 
 The `failure` callback function takes a string argument with error description.
 
