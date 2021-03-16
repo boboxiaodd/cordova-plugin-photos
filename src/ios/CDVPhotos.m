@@ -42,6 +42,7 @@ NSString* const P_LON = @"longitude";
 NSString* const P_DATE = @"date";
 NSString* const P_TS = @"timestamp";
 NSString* const P_TYPE = @"contentType";
+NSString* const P_FILESIZE = @"size";
 
 NSString* const P_SIZE = @"dimension";
 NSString* const P_QUALITY = @"quality";
@@ -214,6 +215,9 @@ NSString* const E_PHOTO_BUSY = @"Fetching of photo assets is in progress";
                                       [assetItem setValue:@(coord.latitude) forKey:P_LAT];
                                       [assetItem setValue:@(coord.longitude) forKey:P_LON];
                                   }
+                                  PHAssetResource *resource = [[PHAssetResource assetResourcesForAsset: asset] firstObject];
+                                  long long fileSize = [[resource valueForKey:@"fileSize"] longLongValue];
+                                  [assetItem setValue:@(fileSize) forKey:P_FILESIZE];
                                   [result addObject:assetItem];
                                   if (limit > 0 && result.count >= limit) {
                                       [weakSelf partial:command withArray:result];
